@@ -16,4 +16,9 @@ class Employee extends Model
         'email',
         'gender'
     ];
+
+    public function getGenderNameAttribute($gender): string
+    {
+        return $gender==0?'Nam':'Nu';
+    }
 }

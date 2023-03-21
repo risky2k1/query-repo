@@ -36,11 +36,20 @@
     @foreach($employees as $employee)
         <tr>
             <td>{{$employee->name}}</td>
-            <td>{{$employee->gender}}</td>
+            <td>{{$employee->gender_name}}</td>
             <td>{{$employee->dob}}</td>
             <td>{{$employee->phone}}</td>
             <td>{{$employee->email}}</td>
-
+            <td>
+                <a href="{{route('employees.edit',$employee)}}">Edit</a>
+                <form action="{{route('employees.destroy',$employee)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">
+                        <a>Delete</a>
+                    </button>
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>
